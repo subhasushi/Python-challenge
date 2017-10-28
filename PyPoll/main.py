@@ -18,8 +18,12 @@ with open(pypoll, newline="") as csvfile:
 
     #Create a list for storing the values
     candidate_list = []
-    
+    firstline = True
     for row in csvreader:
+        #skip first line
+        if firstline:    
+            firstline = False
+            continue
         total_votes = total_votes + 1
 
         #conditonals to find out # of votes for each candidate
@@ -50,7 +54,7 @@ with open(pypoll, newline="") as csvfile:
             print(candidate) 
             text.write(str(candidate))
             text.write("\n") 
-              
+
         print("--------------------------")  
         print(f"Winner: {winner}")
         text.write(f"Winner: {winner}") 
